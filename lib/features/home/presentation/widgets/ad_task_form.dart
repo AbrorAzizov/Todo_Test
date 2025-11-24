@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:new_flutter_projects/features/home/presentation/widgets/cancel_button.dart';
 import 'package:new_flutter_projects/features/home/presentation/widgets/save_button.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/text_styles.dart';
+import '../../data/entity/task_entity.dart';
+import '../bloc/task_cubit.dart';
 import 'custom_date_picker.dart';
 
 class AddTaskForm extends StatefulWidget {
@@ -39,8 +42,18 @@ class _AddTaskFormState extends State<AddTaskForm> {
       return;
     }
 
+    final task = TaskEntity(
+      status:'toImplementation' ,
+      title: _taskController.text,
+      deadline: _selectedDate,
+    );
+
+    // Add task using HomeCubit
+    context.read<HomeCubit>().addTask(task);
+
     Navigator.pop(context);
   }
+
 
   @override
   void dispose() {

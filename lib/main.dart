@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     // 1. Инициализация ScreenUtil происходит здесь
     return ScreenUtilInit(
       // Устанавливаем размер дизайна
-      designSize: const Size(375, 812),
+      designSize: const Size(390, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {

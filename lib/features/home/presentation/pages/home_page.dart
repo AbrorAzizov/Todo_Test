@@ -12,8 +12,6 @@ class HomePage extends StatelessWidget {
     // Вызов модального окна снизу
     showModalBottomSheet(
       context: context,
-      // ВАЖНО: isScrollControlled позволяет форме занимать большую высоту
-      // и корректно подниматься, когда появляется клавиатура.
       isScrollControlled: true,
       builder: (context) {
         // Возвращаем виджет с формой
@@ -39,6 +37,7 @@ class HomePage extends StatelessWidget {
                   AddButton(onPressed: () {_onAddTaskPressed(context);}),
                 ],
               ),
+
             ],
           ),
         ),

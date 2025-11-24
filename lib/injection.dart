@@ -11,7 +11,6 @@ class Injection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  BlocProvider(
-      // Получаем экземпляр Cubit через GetIt (sl())
       create: (context) => sl<HomeCubit>()..loadTasks(),
       child:  HomePage(),
     );

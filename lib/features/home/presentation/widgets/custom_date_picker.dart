@@ -7,7 +7,7 @@ class CustomDatePicker extends StatelessWidget {
   final ValueChanged<DateTime> onDateChanged;
   final TextEditingController controller; // <-- declare the controller
 
-  CustomDatePicker({
+  const CustomDatePicker({
     super.key,
     required this.initialDate,
     required this.onDateChanged,

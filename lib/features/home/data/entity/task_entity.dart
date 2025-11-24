@@ -1,11 +1,11 @@
 class TaskEntity {
-  final int key;
+   int? key;
   final String title;
   final DateTime deadline;
   final String status;
 
   TaskEntity({
-    required this.key,
+    this.key,
     required this.title,
     required this.deadline,
     required this.status,
