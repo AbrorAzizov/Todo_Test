@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:new_flutter_projects/features/home/presentation/widgets/ad_task_form.dart';
 import 'package:new_flutter_projects/features/home/presentation/widgets/add_button.dart';
-
-// Предполагаем, что AppStrings и AppStyles доступны
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/text_styles.dart';
 

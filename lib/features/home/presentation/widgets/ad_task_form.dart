@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:new_flutter_projects/features/home/presentation/widgets/cancel_button.dart';
+import 'package:new_flutter_projects/features/home/presentation/widgets/save_button.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/text_styles.dart';
+import 'custom_date_picker.dart';
 
 class AddTaskForm extends StatefulWidget {
   const AddTaskForm({super.key});
@@ -29,55 +30,6 @@ class _AddTaskFormState extends State<AddTaskForm> {
     _deadlineController.text = '${date.day}.${date.month}.${date.year}';
   }
 
-  // Функция для показа CupertinoDatePicker
-  void _showDatePickerSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          height: 250.h,
-          color: Colors.white,
-          child: Column(
-            children: [
-              // Кнопка "Готово" для закрытия
-              SizedBox(
-                height: 40.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CupertinoButton(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      onPressed: () => Navigator.pop(context),
-                      child: Text(
-                        'Готово',
-                        style: TextStyle(
-                            color: Colors.teal.shade500,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // Сам CupertinoDatePicker
-              SizedBox(
-                height: 210.h,
-                child: CupertinoDatePicker(
-                  initialDateTime: _selectedDate,
-                  mode: CupertinoDatePickerMode.date,
-                  onDateTimeChanged: (DateTime newDate) {
-                    setState(() {
-                      _selectedDate = newDate;
-                      _updateDeadlineText(newDate);
-                    });
-                  },
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
 
   void _saveTask() {
     if (_taskController.text.isEmpty) {
@@ -86,7 +38,6 @@ class _AddTaskFormState extends State<AddTaskForm> {
       );
       return;
     }
-    // Здесь должна быть логика вызова AddTaskBloc
 
     Navigator.pop(context);
   }
@@ -138,46 +89,32 @@ class _AddTaskFormState extends State<AddTaskForm> {
           SizedBox(height: 15.h),
 
           // 2. Поле ввода срока истекания (Вызов Cupertino Date Picker)
-          GestureDetector(
-            onTap: () => _showDatePickerSheet(context),
-            child: AbsorbPointer(
-              child: TextField(
-                controller: _deadlineController,
-                style: AppStyles.inputFieldText,
-                decoration: InputDecoration(
-                  labelText: AppStrings.labelDeadline,
-                  labelStyle: AppStyles.inputFieldHint,
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r)),
-                  suffixIcon: Icon(Icons.calendar_today, size: 20.sp, color: Colors.grey.shade600),
-                  contentPadding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-                ),
-              ),
-            ),
+          CustomDatePicker(
+            initialDate: _selectedDate,
+            controller: _deadlineController, // <-- pass controller
+            onDateChanged: (newDate) {
+              setState(() {
+                _selectedDate = newDate;
+                _updateDeadlineText(newDate);
+              });
+            },
           ),
-          SizedBox(height: 40.h),
+
+          SizedBox(height: 30.h),
 
           // Кнопка сохранения (точность Figma)
-          SizedBox(
-            width: double.infinity,
-            height: 55.h,
-            child: ElevatedButton(
-              onPressed: _saveTask,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF007D88), // Ваш цвет #007D88
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
+          Row(
+            children: [
+              Expanded(
+                child: CancelButton(callback: () => Navigator.pop(context)),
               ),
-              child: Text(
-                AppStrings.buttonSave,
-                style: AppStyles.statusTitle.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18.sp
-                ),
+              SizedBox(width: 10.w),
+              Expanded(
+                child: SaveButton(callback: () => _saveTask()),
               ),
-            ),
-          ),
+            ],
+          )
+
         ],
       ),
     );
