@@ -7,13 +7,17 @@ import 'package:new_flutter_projects/features/home/domain/models/task_model.dart
 import 'package:new_flutter_projects/features/home/domain/repo/task_repo.dart';
 import 'package:new_flutter_projects/features/home/presentation/bloc/task_cubit.dart';
 
+import 'features/home/domain/usecases/sort_tasks_usecase.dart';
+
 final sl = GetIt.instance;
 
 Future<void> setupServiceLocator() async {
   final box = await Hive.openBox<TaskModel>('tasks');
 
   sl.registerSingleton<TaskRepository>(TaskRepositoryImpl(box));
+  sl.registerSingleton<GetTasksUseCase>(GetTasksUseCase(sl<TaskRepository>()));
 
-  sl.registerLazySingleton(() => HomeCubit(repository: sl<TaskRepository>()),);
+
+  sl.registerLazySingleton(() => HomeCubit(repository: sl<TaskRepository>(),getTasksUseCase:sl<GetTasksUseCase>() ),);
 
 }

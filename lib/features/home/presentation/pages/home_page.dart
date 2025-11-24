@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,10 +35,14 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(AppStrings.appName, style: AppStyles.headerTitle),
-                  AddButton(onPressed: () {_onAddTaskPressed(context);}),
+                  AddButton(
+                    onPressed: () {
+                      _onAddTaskPressed(context);
+                    },
+                  ),
                 ],
               ),
-
+              SizedBox(height: 30.h),
             ],
           ),
         ),

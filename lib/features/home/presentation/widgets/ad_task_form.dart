@@ -43,7 +43,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
     }
 
     final task = TaskEntity(
-      status:'toImplementation' ,
+      status:'to_do' ,
       title: _taskController.text,
       deadline: _selectedDate,
     );

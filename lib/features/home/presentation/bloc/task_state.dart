@@ -12,9 +12,17 @@ class HomeLoading extends HomeState {}
 
 // 3. Состояние успешной загрузки данных
 class HomeLoaded extends HomeState {
-  final List<TaskEntity>? tasks;
+  final List<TaskEntity> toDo;        // К выполнению
+  final List<TaskEntity> inProgress;  // В работе
+  final List<TaskEntity> review;      // На проверке
+  final List<TaskEntity> done;        // Выполнено
 
-  HomeLoaded(this.tasks);
+  HomeLoaded({
+    required this.toDo,
+    required this.inProgress,
+    required this.review,
+    required this.done,
+  });
 }
 
 // 4. Состояние ошибки
