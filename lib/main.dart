@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/home/presentation/pages/home_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,13 +20,13 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
-
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
           // 2. MyHomePage используется как домашний экран
-          home: const MyHomePage(title: 'Flutter Demo Home Page with ScreenUtil'),
+          home: const HomePage(),
         );
       },
     );
