@@ -13,7 +13,7 @@ class TaskModel extends HiveObject{
   final DateTime deadline;
 
   @HiveField(2)
-  final String status;
+   String status;
 
   TaskModel({
     required this.title,

@@ -87,7 +87,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
       return;
     }
     // Здесь должна быть логика вызова AddTaskBloc
-    print('Задача сохранена: ${_taskController.text} до ${_deadlineController.text}');
+
     Navigator.pop(context);
   }
 

@@ -37,6 +37,8 @@ dependencies:
   flutter_screenutil: ^5.9.0
   hive: ^2.2.3 # (Актуальная версия)
   hive_flutter: ^1.1.0 # (Актуальная версия)
+  flutter_bloc:
+  get_it:
 
 dev_dependencies:
   flutter_test:

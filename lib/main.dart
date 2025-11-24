@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
+
 import 'package:hive_flutter/adapters.dart';
 
 import 'features/home/domain/models/task_model.dart';
-import 'features/home/presentation/pages/home_page.dart';
+import 'injection.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // 2. MyHomePage используется как домашний экран
-          home: const HomePage(),
+          home: const Injection(),
         );
       },
     );
