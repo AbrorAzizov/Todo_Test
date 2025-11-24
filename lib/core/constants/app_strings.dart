@@ -4,7 +4,7 @@ class AppStrings {
   // -----------------------------------------------------------------------
 
   static const String appName = 'Todo';
-  static const String addTaskTitle = 'Новая задача';
+  static const String addTaskTitle = 'Создание Задачи';
   static const String buttonSave = 'Сохранить';
   static const String buttonCancel = 'Отмена';
   static const String placeholderBody = 'Здесь будут отображаться задачи';

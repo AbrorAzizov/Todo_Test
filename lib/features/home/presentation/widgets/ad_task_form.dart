@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart'; // Импортируем Cupertino
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/app_strings.dart';
@@ -109,9 +109,18 @@ class _AddTaskFormState extends State<AddTaskForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Заголовок окна (точность Figma)
-          Text(
-            AppStrings.addTaskTitle,
-            style: AppStyles.headerTitle.copyWith(fontSize: 22.sp),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                AppStrings.addTaskTitle,
+                style: AppStyles.headerTitle.copyWith(fontSize: 22.sp),
+              ),
+              IconButton(
+                icon: Icon(Icons.close, size: 28.sp, color: Colors.grey.shade600),
+                onPressed: () => Navigator.pop(context), // Закрывает модальное окно
+              ),
+            ],
           ),
           SizedBox(height: 25.h),
 
