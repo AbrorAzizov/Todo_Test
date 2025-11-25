@@ -9,7 +9,7 @@ import '../../../../core/constants/text_styles.dart';
 import '../../data/entity/task_entity.dart';
 import '../bloc/task_cubit.dart';
 
-import '../widgets/task_column.dart';
+import '../widgets/task/task_column.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -79,13 +79,13 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             _col("To Do", state.toDo, "to_do"),
-                            SizedBox(width: 16.w),
+
                             _col("In Progress", state.inProgress, "in_progress"),
-                            SizedBox(width: 16.w),
+
                             _col("Review", state.review, "review"),
-                            SizedBox(width: 16.w),
+
                             _col("Done", state.done, "done"),
-                            SizedBox(width: 12.w),
+
                           ],
                         ),
                       );

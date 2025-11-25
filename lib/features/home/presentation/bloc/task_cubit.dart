@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
 import 'package:new_flutter_projects/features/home/presentation/bloc/task_state.dart';
 import '../../data/entity/task_entity.dart';
 import '../../domain/repo/task_repo.dart';
-import '../../domain/usecases/sort_tasks_usecase.dart';
+import '../../domain/use_cases/sort_tasks_use_case.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final TaskRepository repository;

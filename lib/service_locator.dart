@@ -7,7 +7,7 @@ import 'package:new_flutter_projects/features/home/domain/models/task_model.dart
 import 'package:new_flutter_projects/features/home/domain/repo/task_repo.dart';
 import 'package:new_flutter_projects/features/home/presentation/bloc/task_cubit.dart';
 
-import 'features/home/domain/usecases/sort_tasks_usecase.dart';
+import 'features/home/domain/use_cases/sort_tasks_use_case.dart';
 
 final sl = GetIt.instance;
 

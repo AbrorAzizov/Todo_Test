@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:new_flutter_projects/features/home/presentation/widgets/cancel_button.dart';
-import 'package:new_flutter_projects/features/home/presentation/widgets/save_button.dart';
+import 'package:new_flutter_projects/features/home/presentation/widgets/buttons/cancel_button.dart';
+import 'package:new_flutter_projects/features/home/presentation/widgets/buttons/save_button.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/text_styles.dart';
 import '../../data/entity/task_entity.dart';
