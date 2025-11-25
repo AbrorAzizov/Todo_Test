@@ -1,21 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:new_flutter_projects/features/home/presentation/bloc/task_state.dart';
 import 'package:new_flutter_projects/features/home/presentation/widgets/ad_task_form.dart';
 import 'package:new_flutter_projects/features/home/presentation/widgets/add_button.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/text_styles.dart';
+import '../../data/entity/task_entity.dart';
+import '../bloc/task_cubit.dart';
 
-class HomePage extends StatelessWidget {
+import '../widgets/task_column.dart';
+
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  Widget _col(String title, List<TaskEntity> list, String status) {
+    return SizedBox(
+      width: 300.w,
+      child: TaskColumn(
+        title: title,
+        tasks: list,
+        status: status,
+      ),
+    );
+  }
+
   void _onAddTaskPressed(BuildContext context) {
-    // Вызов модального окна снизу
+    final homeCubit = context.read<HomeCubit>();
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (context) {
-        // Возвращаем виджет с формой
-        return const AddTaskForm();
+      backgroundColor: Colors.white,
+      builder: (_) {
+        return BlocProvider.value(
+          value: homeCubit,
+          child: const AddTaskForm(),
+        );
       },
     );
   }
@@ -23,26 +50,59 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100, // Светлый фон, как в дизайне
-      // 2. Тело экрана со списком статусов
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-        child: SafeArea(
+      backgroundColor: Colors.grey.shade100,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20.h),
+              SizedBox(height: 6.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(AppStrings.appName, style: AppStyles.headerTitle),
-                  AddButton(
-                    onPressed: () {
-                      _onAddTaskPressed(context);
-                    },
-                  ),
+                  Text(AppStrings.appName, style: AppStyles.headerTitle.copyWith(fontSize: 28.sp)),
+                  AddButton(onPressed: () => _onAddTaskPressed(context)),
                 ],
               ),
-              SizedBox(height: 30.h),
+              SizedBox(height: 22.h),
+
+              // Основная рабочая зона
+              Expanded(
+                child: BlocBuilder<HomeCubit, HomeState>(
+                  builder: (context, state) {
+                    if (state is HomeLoaded) {
+                      // Горизонтальная полоса колонок (как в Figma)
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _col("To Do", state.toDo, "to_do"),
+                            SizedBox(width: 16.w),
+                            _col("In Progress", state.inProgress, "in_progress"),
+                            SizedBox(width: 16.w),
+                            _col("Review", state.review, "review"),
+                            SizedBox(width: 16.w),
+                            _col("Done", state.done, "done"),
+                            SizedBox(width: 12.w),
+                          ],
+                        ),
+                      );
+                    }
+
+                    if (state is HomeLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    if (state is HomeError) {
+                      return Center(child: Text('Ошибка: ${state.message}'));
+                    }
+
+                    return const SizedBox.shrink();
+                  },
+                ),
+              ),
             ],
           ),
         ),

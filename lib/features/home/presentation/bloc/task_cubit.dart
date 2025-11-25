@@ -1,4 +1,5 @@
-import 'package:bloc/bloc.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
 import 'package:new_flutter_projects/features/home/presentation/bloc/task_state.dart';
 import '../../data/entity/task_entity.dart';
 import '../../domain/repo/task_repo.dart';
@@ -50,7 +51,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   /// Изменить статус задачи
-  Future<void> updateStatus(int key, String newStatus) async {
+  Future<void> updateTaskStatus(int key, String newStatus) async {
     try {
       if (state is HomeLoaded) {
         await repository.updateStatus(key: key, newStatus: newStatus);

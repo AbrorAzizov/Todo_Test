@@ -48,10 +48,10 @@ class _AddTaskFormState extends State<AddTaskForm> {
       deadline: _selectedDate,
     );
 
+    Navigator.pop(context);
     // Add task using HomeCubit
     context.read<HomeCubit>().addTask(task);
 
-    Navigator.pop(context);
   }
 
 

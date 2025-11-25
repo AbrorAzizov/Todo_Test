@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:hive_flutter/adapters.dart';
+import 'package:new_flutter_projects/service_locator.dart';
 
 import 'features/home/domain/models/task_model.dart';
 import 'injection.dart';
@@ -10,6 +11,9 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TaskModelAdapter());
+  await setupServiceLocator();
+
+
   runApp(const MyApp());
 }
 
