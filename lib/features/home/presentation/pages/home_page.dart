@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -80,13 +79,13 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _col("To Do", state.toDo, "to_do"),
+                            _col("К выполнению ", state.toDo, "to_do"),
 
-                            _col("In Progress", state.inProgress, "in_progress"),
+                            _col("В работе", state.inProgress, "in_progress"),
 
-                            _col("Review", state.review, "review"),
+                            _col("На проверке", state.review, "review"),
 
-                            _col("Done", state.done, "done"),
+                            _col("Выполнено", state.done, "done"),
 
                           ],
                         ),

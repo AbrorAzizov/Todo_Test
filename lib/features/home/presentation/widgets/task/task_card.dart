@@ -128,6 +128,8 @@ class _TaskCardWidgetState extends State<TaskCardWidget> {
 
             if (isExpired)
               Container(
+                height: 24.h,
+                width: 88.w,
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                 decoration: BoxDecoration(
                   color: Colors.red.shade400,

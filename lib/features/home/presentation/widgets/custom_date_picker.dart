@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:new_flutter_projects/core/constants/app_strings.dart';
 
 class CustomDatePicker extends StatelessWidget {
   final DateTime initialDate;
@@ -70,7 +71,7 @@ class CustomDatePicker extends StatelessWidget {
         child: TextField(
           controller: controller, // <-- attach controller
           decoration: InputDecoration(
-            labelText: 'Deadline',
+            labelText: AppStrings.labelDeadline,
             suffixIcon: Icon(Icons.calendar_today,
                 size: 20.sp, color: Colors.grey.shade600),
             border: OutlineInputBorder(

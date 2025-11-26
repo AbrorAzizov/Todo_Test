@@ -106,7 +106,7 @@ class _TaskColumnState extends State<TaskColumn> {
         borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withAlpha(10),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -133,7 +133,7 @@ class _TaskColumnState extends State<TaskColumn> {
               height: 56.h,
               margin: EdgeInsets.only(top: 6.h),
               decoration: BoxDecoration(
-                color: Colors.teal.withOpacity(0.08),
+                color: Colors.teal.withAlpha(20),
                 borderRadius: BorderRadius.circular(12.r),
               ),
             ),
