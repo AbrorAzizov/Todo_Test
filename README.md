@@ -1,16 +1,27 @@
-# new_flutter_projects
+📌 Todo Board — Flutter Project
 
-Flutter project for testing
+Многофункциональное приложение для управления задачами, выполненное с использованием Flutter, BLoC/Cubit, Clean Architecture, и адаптированное под макет из Figma.
 
-## Getting Started
+Проект разработан для тестирования, обучения и демонстрации навыков построения UI и логики управления задачами.
 
-This project is a starting point for a Flutter application.
+🚀 Функциональность
+📝 Редактирование статуса (To Do → In Progress → Review → Done)
+🗑 даление задач через контекстное меню при нажатии
+🎯 Drag & Drop-система для перемещения задач
+🎨 UI адаптирован под макет из Figma
+⚙️ Чистая архитектура
+🔄 State Management: Flutter BLoC (Cubit)
 
-A few resources to get you started if this is your first Flutter project:
+🧱 Технологии
+ cupertino_icons: ^1.0.8
+  flutter_screenutil: ^5.9.0
+  hive: ^2.2.3 # (Актуальная версия)
+  hive_flutter: ^1.1.0 # (Актуальная версия)
+  flutter_bloc:
+  get_it:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  hive_generator: ^2.0.1 # (Актуальная версия)
+  build_runner: ^2.4.6 # (Актуальная версия)
